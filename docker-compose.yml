@@ -1,0 +1,33 @@
+version: "3"
+services:
+  browserless:
+    image: ghcr.io/browserless/chrome:latest
+    restart: always
+    container_name: browserless
+    ports:
+      - "3010:3000"
+  squid:
+    image: ubuntu/squid
+    restart: always
+    container_name: squid
+    hostname: squid
+    ports:
+      - "3218:3128"
+
+  ott-cron:
+    container_name: ott-cron
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - ./src:/home/node/app/src
+      - ott-cron-node-modules:/home/node/app/node-modules
+    #working_dir: /home/node/app
+    command: node cron
+    depends_on:
+      - browserless
+volumes:
+  ott-cron-node-modules:
