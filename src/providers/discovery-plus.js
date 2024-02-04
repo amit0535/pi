@@ -6,7 +6,6 @@ export async function getToken() {
 
   try {
     const page = await Browser.getPage();
-    await page.setRequestInterception(true);
     page.on("request", (request) => {
       if (!allowedResourseTypes.includes(request.resourceType())) {
         request.abort();

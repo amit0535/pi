@@ -1,2 +1,2 @@
-const { refreshToken } = require("./tokens");
+const { refreshToken } = require("./tokens.js");
 refreshToken("Z5");

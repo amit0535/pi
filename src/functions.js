@@ -4,7 +4,6 @@ export async function postJSON(url, data) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
   });
-  console.log(res);
   let json = await res.json();
   return json;
 }

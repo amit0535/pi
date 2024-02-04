@@ -2,15 +2,18 @@
   "name": "pi-ott",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/cron.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node  --loader=./src/loader.js src/cron.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "node-cron": "^3.0.0",
     "node-fetch": "^2.6.1",
-    "puppeteer": "^21.11.0"
+    "puppeteer-core": "^21.11.0",
+    "resolve": "^1.22.8"
   }
 }

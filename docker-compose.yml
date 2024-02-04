@@ -26,7 +26,7 @@ services:
       - ./src:/home/node/app/src
       - ott-cron-node-modules:/home/node/app/node-modules
     #working_dir: /home/node/app
-    command: node cron
+    command: npm run start
     depends_on:
       - browserless
 volumes:

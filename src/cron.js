@@ -1,5 +1,5 @@
 //const cron = require("node-cron");
-import { refreshToken } from "../tokens";
+import { refreshToken } from "./tokens.js";
 try {
   setTimeout(() => {
     process.exit(1);
@@ -7,7 +7,7 @@ try {
   runJobs();
 } catch (e) {
   console.log(e);
-  process.exit(1);
+  //process.exit(1);
 }
 async function runJobs() {
   console.log("running every hour");
@@ -16,7 +16,7 @@ async function runJobs() {
   await refreshToken("Z5");
   await refreshToken("DP");
   console.log("cron completed");
-  process.exit(0);
+  //process.exit(0);
 }
 /*
 cron.schedule("10 * * * *", async () => {

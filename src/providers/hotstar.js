@@ -1,10 +1,11 @@
+import Browser from "../Browser";
 const allowedResourseTypes = ["fetch", "xhr", "script", "document", "other"];
+
 export async function getToken() {
   let token;
-  const browser = await puppeteer.launch();
+
   try {
-    const page = await browser.newPage();
-    await page.setRequestInterception(true);
+    const page = await Browser.getPage();
     page.on("request", (request) => {
       if (!allowedResourseTypes.includes(request.resourceType())) {
         request.abort();
@@ -19,14 +20,10 @@ export async function getToken() {
     await page.goto("https://www.hotstar.com/in", {
       waitUntil: "networkidle0",
     });
-    await page.evaluate((_) => {
-      // this will be executed within the page, that was loaded before
-      //document.body.style.background = '#000';
-    });
+    await page.evaluate((_) => {});
   } catch (e) {
     console.log(e);
   } finally {
-    await browser.close();
   }
   //await page.screenshot({ path: "example.png" });
 

@@ -1,8 +1,8 @@
-import sony from "./providers/sony";
-import hotstar from "./providers/hotstar";
-import zee5 from "./providers/zee5";
-import discovery from "./providers/discovery-plus";
-import { postJSON } from "./functions";
+import * as sony from "./providers/sony.js";
+import * as hotstar from "./providers/hotstar.js";
+import * as zee5 from "./providers/zee5.js";
+import * as discovery from "./providers/discovery-plus.js";
+import { postJSON } from "./functions.js";
 export async function refreshToken(source) {
   let f;
   if (source == "SL") {
