@@ -11,5 +11,10 @@ jobs:
       - name: Checkout main branch
         uses: actions/checkout@v2
 
+      - name: "Create env file"
+        run: |
+          touch .env
+          echo BROWSER_ENDPOINT="ws://browserless:3000" >> .env
+
       - name: Run and Build
         run: docker compose up -d --build
