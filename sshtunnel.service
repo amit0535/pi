@@ -5,7 +5,7 @@ After=network.target
 [Service]
 Restart=always
 RestartSec=20
-User=ubuntu
+User=amit
 ExecStart=/bin/ssh -NT -o ServerAliveInterval=60 -R 3128:localhost:3128 amit@node.plns.in
 
 [Install]
