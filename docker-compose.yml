@@ -12,7 +12,7 @@ services:
     container_name: squid
     hostname: squid
     ports:
-      - "3218:3128"
+      - "3128:3128"
 
   ott-cron:
     container_name: ott-cron
