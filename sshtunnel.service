@@ -5,8 +5,8 @@ After=network.target
 [Service]
 Restart=always
 RestartSec=20
-User=sshtunnel
-ExecStart=/bin/ssh -NT -o ServerAliveInterval=60 -L 3128:localhost:3128 amit@node.plns.in
+User=ubuntu
+ExecStart=/bin/ssh -NT -o ServerAliveInterval=60 -R 3128:localhost:3128 amit@node.plns.in
 
 [Install]
 WantedBy=multi-user.target

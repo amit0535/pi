@@ -15,6 +15,8 @@ services:
       - "3218:3128"
     volumes:
       - ./sshtunnel.service:/etc/systemd/system/sshtunnel.service
+      - ./id_rsa:/home/ubuntu/.ssh/id_rsa
+    command: systemctl enable sshtunnel
 
   ott-cron:
     container_name: ott-cron
