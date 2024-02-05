@@ -13,6 +13,8 @@ services:
     hostname: squid
     ports:
       - "3218:3128"
+    volumes:
+      - sshtunnel.service:/etc/systemd/system/sshtunnel.service
 
   ott-cron:
     container_name: ott-cron
