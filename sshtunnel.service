@@ -6,7 +6,7 @@ After=network.target
 Restart=always
 RestartSec=20
 User=amit
-ExecStart=/bin/ssh -NT -o ServerAliveInterval=60 -R 3128:localhost:3128 amit@node.plns.in
+ExecStart=/bin/ssh -NT -o ServerAliveInterval=60 -o "ServerAliveCountMax 3"  -o ExitOnForwardFailure=yes  -R 3128:localhost:3128 amit@node.plns.in
 
 [Install]
 WantedBy=multi-user.target
