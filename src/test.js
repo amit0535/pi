@@ -1,2 +1,2 @@
-const { refreshToken } = require("./tokens.js");
-refreshToken("Z5");
+import { refreshToken } from "./tokens";
+refreshToken("SL");

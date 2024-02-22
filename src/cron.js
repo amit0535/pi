@@ -1,5 +1,5 @@
-const cron = require("node-cron");
-import { refreshToken } from "./tokens.js";
+import cron from  "node-cron";
+import { refreshToken } from "./tokens";
 cron.schedule("5 */15 * * * *", async () => {
   await refreshToken("SL");
 });
