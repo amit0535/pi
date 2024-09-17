@@ -18,7 +18,7 @@ export async function refreshToken(source) {
   let data = {};
   data.source = source;
   data.token = token;
-  let json = await postJSON("https://ott-new.plns.in/webhook/token", data);
+  let json = await postJSON("http://do24.plns.in:3000/webhook/token", data);
   console.log(json);
   if (json.status == "OK") {
     console.log("success");
