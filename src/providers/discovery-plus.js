@@ -10,15 +10,14 @@ export async function getToken() {
       if (!allowedResourseTypes.includes(request.resourceType())) {
         request.abort();
       } else request.continue();
-      if (
-        request.url().startsWith("https://ap2-prod-direct.discoveryplus.in")
-      ) {
-      }
     });
 
     await page.goto("https://www.discoveryplus.in/", {
-      waitUntil: "networkidle0",
+      waitUntil: "domcontentloaded",
     });
+    await page.waitForRequest((request) =>
+      request.url().startsWith("https://ap2-prod-direct.discoveryplus.in/cms")
+    );
     await page.evaluate((_) => {});
     const cookies = await page.cookies(
       "https://ap2-prod-direct.discoveryplus.in"
