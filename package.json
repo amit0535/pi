@@ -5,7 +5,7 @@
   "main": "src/cron.js",
   "type": "module",
   "scripts": {
-    "test": "node  --loader=./src/loader.js src/test.js",
+    "test": "node --env-file=.env  --loader=./src/loader.js src/test.js",
     "start": "node  --loader=./src/loader.js src/cron.js"
   },
   "author": "",

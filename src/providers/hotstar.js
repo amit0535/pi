@@ -9,25 +9,24 @@ export async function getToken() {
     page.on("request", (request) => {
       if (!allowedResourseTypes.includes(request.resourceType())) {
         request.abort();
-      } else request.continue();
-      if (
-        request.headers().hotstarauth &&
-        request.url().startsWith("https://persona.hotstar.com/v1/users/")
-      ) {
-        token = request.headers().hotstarauth;
+      } else {
+        request.continue();
+      }
+      const headers = request.headers();
+      const userAccessToken = headers["x-hs-usertoken"];
+      const isApiUrl = request
+        .url()
+        .startsWith("https://bifrost-api.hotstar.com");
+      if (userAccessToken && isApiUrl) {
+        token = userAccessToken;
       }
     });
-    await page.goto("https://www.hotstar.com/in", {
-      waitUntil: "networkidle0",
-    });
+    await page.goto("https://www.hotstar.com/in");
     await page.evaluate((_) => {});
   } catch (e) {
     console.log(e);
   } finally {
   }
-  //await page.screenshot({ path: "example.png" });
 
-  console.log(token);
   return token;
 }
-//module.exports.getToken();
